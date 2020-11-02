@@ -39,11 +39,9 @@ class App extends Component {
   }
   render() {
     return (
-      <>
-        <div className="Clock">
-          <h3 className="time">{this.state.time}</h3>
-        </div>
-      </>
+      <div className="Clock">
+        <h3 className="time">{this.state.time}</h3>
+      </div>
     );
   }
 }
