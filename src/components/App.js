@@ -23,7 +23,7 @@ class App extends Component {
       let hour = date.getHours();
       let minute = date.getMinutes();
       let seconds = date.getSeconds();
-      let ampm = this.hour >= 12 ? "AM" : "PM";
+      let ampm = this.hour >= 12 ? "PM" : "AM";
       hour = hour % 12;
       hour = hour ? hour : 12;
       hour = fullTime(hour);
