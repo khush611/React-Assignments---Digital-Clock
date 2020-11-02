@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import "../styles/App.css";
+import "./styles.css";
 
 class App extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class App extends Component {
       let hour = date.getHours();
       let minute = date.getMinutes();
       let seconds = date.getSeconds();
-      let ampm = this.hour >= 12 ? "PM" : "AM";
+      let ampm = hour >= 12 ? "PM" : "AM";
       hour = hour % 12;
       hour = hour ? hour : 12;
       hour = fullTime(hour);
