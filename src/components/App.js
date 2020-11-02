@@ -1,46 +1,40 @@
 import React, { Component, useState } from "react";
-import "./styles.css";
+import "../styles/App.css";
 
 class App extends Component {
-  componentDidMount() {
-    this.update = setInterval(() => {
-      this.getTime();
-    });
-  }
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      time: ""
+      time: new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true
+      })
     };
   }
-  componentWillUnmount() {
-    clearInterval(this.update);
+  tick() {
+    this.setState({
+      time: new Date().toLocaleTimeString("en-US", {
+        hour: "numeric",
+        minute: "numeric",
+        second: "numeric",
+        hour12: true
+      })
+    });
   }
-  getTime() {
-    setInterval(() => {
-      let date = new Date();
-      let hour = date.getHours();
-      let minute = date.getMinutes();
-      let seconds = date.getSeconds();
-      let ampm = hour >= 12 ? "PM" : "AM";
-      hour = hour % 12;
-      hour = hour ? hour : 12;
-      hour = fullTime(hour);
-      minute = fullTime(minute);
-      seconds = fullTime(seconds);
-      this.setState({
-        time: (hour % 12) + ":" + minute + ":" + seconds + " " + ampm
-      });
-      function fullTime(n) {
-        return n < 10 ? "0" + n : n;
-      }
-    }, 1000);
+
+  componentDidMount() {
+    this.intervalID = setInterval(() => this.tick(), 1000);
+  }
+  componentWillUnmount() {
+    clearInterval(this.intervalID);
   }
   render() {
     return (
       <div className="App">
         <div className="Clock">
-          <h3 id="time">{this.state.time}</h3>
+          <h3 id="time">{`${this.state.time}`}</h3>
         </div>
       </div>
     );
