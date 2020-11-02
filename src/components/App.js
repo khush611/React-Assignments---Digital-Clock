@@ -14,7 +14,6 @@ class App extends Component {
     };
   }
   componentWillUnmount() {
-    // delete the interval just before component is removed
     clearInterval(this.update);
   }
   getTime() {
