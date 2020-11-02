@@ -38,8 +38,10 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="Clock">
-        <h3 id="time">{this.state.time}</h3>
+      <div className="App">
+        <div className="Clock">
+          <h3 id="time">{this.state.time}</h3>
+        </div>
       </div>
     );
   }
